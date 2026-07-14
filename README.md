@@ -114,9 +114,9 @@ src/
 ├── App.tsx                  # Main application component
 ├── main.tsx                 # Application entry point
 └── index.css               # Global styles and Tailwind directives
+```
 
----
-### Design Decisions
+## Output
 CSS Variables for Theming: All colors use CSS custom properties for consistent theming and easy theme switching
 
 Mobile-First Approach: Built for mobile first with progressive enhancement for larger screens
