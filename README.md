@@ -46,23 +46,6 @@ Study Sprint is a focus session tracker that lets students run timed work interv
 - Error states with recovery actions
 - Smooth transitions and micro-interactions
 
-### Accessibility
-- 100/100 Lighthouse Accessibility score
-- Semantic HTML with proper landmark regions
-- ARIA labels on all interactive elements
-- aria-pressed for toggle controls
-- aria-live timer announcements
-- Skip to main content link
-- Visible focus indicators with WCAG AA contrast
-- prefers-reduced-motion support
-
-### Responsive Design
-- Mobile-first approach with real layout reflow
-- Tested at 375px (mobile), 768px (tablet), and 1440px (desktop)
-- Clamp-based typography for fluid scaling
-- Flex-wrap for buttons and chips on narrow viewports
-- Progress bar hidden on mobile per mock specification
-
 ---
 
 ## Technology Stack
@@ -137,6 +120,7 @@ src/
 ├── main.tsx                 # Application entry point
 └── index.css               # Global styles and Tailwind directives
 
+---
 ### Acknowledgments
 Built as part of the Web Dev Track stretch task
 
