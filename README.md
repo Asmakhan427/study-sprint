@@ -8,11 +8,6 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="https://study-sprint-dklx.vercel.app">https://study-sprint-dklx.vercel.app</a>
-</p>
-
-
 ## Overview
 
 Study Sprint is a focus session tracker that lets students run timed work intervals using a split-flap departure-board timer. The application supports three session presets (Sprint 25m, Deep Work 50m, Short Break 5m), tracks daily focus statistics, and maintains a running log of today's sessions. The design system includes a full light/dark theme toggle driven entirely by CSS custom properties.
