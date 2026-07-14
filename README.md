@@ -1,7 +1,5 @@
 # Study Sprint
 
-> A pixel-perfect, accessible, responsive focus-session timer built in React 18 + TypeScript
-
 <p align="center">
   <a href="https://study-sprint-dklx.vercel.app" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-View_App-2B6CB0?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
