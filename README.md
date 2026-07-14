@@ -2,7 +2,16 @@
 
 > A pixel-perfect, accessible, responsive focus-session timer built in React 18 + TypeScript
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-View_App-2B6CB0?style=for-the-badge&logo=vercel&logoColor=white)](https://study-sprint-dklx.vercel.app)
+<p align="center">
+  <a href="https://study-sprint-dklx.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-View_App-2B6CB0?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://study-sprint-dklx.vercel.app">https://study-sprint-dklx.vercel.app</a>
+</p>
+
 
 ## Overview
 
@@ -23,28 +32,21 @@ Study Sprint is a focus session tracker that lets students run timed work interv
 - Split-flap departure-board timer with MM:SS countdown
 - Three session presets: Sprint (25m), Deep Work (50m), Short Break (5m)
 - Start, Pause, Resume, and Reset controls
-- Animated progress bar showing session completion percentage
-- Session status announcements via ARIA live regions
 
 ### Theme and Design
 - Light and Dark theme support with CSS custom properties
 - Theme preference persisted to localStorage
 - Respects system prefers-color-scheme on first load
-- Pixel-perfect recreation of Figma mock reference
-- 8px spacing system throughout the application
 
 ### Session Management
 - Automatic session logging with timestamps
 - Status tracking: Completed, Skipped, or Failed
 - Statistics dashboard showing daily total, streak, and session count
-- Simulated save flow with loading state and retryable error handling
-- Error banner with role="alert" for accessibility
 
 ### Interactive States
 - Hover, focus-visible, active, and disabled states for all interactive elements
 - Loading states with animated spinners
-- Error states with recovery actions
-- Smooth transitions and micro-interactions
+
 
 ---
 
@@ -120,10 +122,3 @@ src/
 ├── main.tsx                 # Application entry point
 └── index.css               # Global styles and Tailwind directives
 
----
-### Acknowledgments
-Built as part of the Web Dev Track stretch task
-
-Design inspired by departure board timers
-
-React, TypeScript, and Vite communities
