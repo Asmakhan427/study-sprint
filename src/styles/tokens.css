@@ -1,0 +1,71 @@
+/**
+ * Design tokens — the single source of truth for color in this app.
+ * No component ever hardcodes a hex value; everything reads from these
+ * CSS custom properties, which flip when [data-theme] changes.
+ *
+ * Palette: sea green + white. Crisp white surfaces with a sea-green
+ * primary accent (buttons, active states, timer progress) and a deeper
+ * pine-green secondary accent (streak/completion). All foreground/
+ * background pairs below are verified at >=4.5:1 contrast in both themes.
+ */
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #eaf5ee;
+  --ink: #152019;
+  --ink-soft: #4c5d54;
+  --line: #d8e8de;
+  --primary: #257048;
+  --primary-soft: #dcf2e4;
+  --on-primary: #ffffff;
+  --secondary: #14503a;
+  --secondary-soft: #cbe3d5;
+  --danger: #a03a31;
+  --danger-soft: #f4dedb;
+  --board: #0f1f17;
+  --board-digit: #8fe3b0;
+  --shadow: 0 1px 2px rgba(21, 32, 25, 0.06), 0 8px 24px rgba(21, 32, 25, 0.06);
+  --focus-ring: var(--primary);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1b15;
+  --surface: #16261d;
+  --surface-2: #1e332a;
+  --ink: #eaf3ee;
+  --ink-soft: #9fb6a8;
+  --line: #2a3f33;
+  --primary: #52c285;
+  --primary-soft: #1c3a28;
+  --on-primary: #08140d;
+  --secondary: #8fe3b0;
+  --secondary-soft: #16301f;
+  --danger: #e37065;
+  --danger-soft: #3a1e1b;
+  --board: #081410;
+  --board-digit: #8fe3b0;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+  --focus-ring: var(--primary);
+}
+
+/* Smooth theme transition on the properties that actually change */
+:root {
+  color-scheme: light dark;
+}
+
+body,
+[data-theme] * {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
