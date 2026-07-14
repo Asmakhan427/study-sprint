@@ -12,7 +12,7 @@ Study Sprint is a focus session tracker that lets students run timed work interv
 
 ---
 
-## Screenshots
+## Output
 
 <img width="1596" height="775" alt="image" src="https://github.com/user-attachments/assets/03b526fc-7159-4c14-a9aa-c687092a9260" />
 <img width="1574" height="797" alt="image" src="https://github.com/user-attachments/assets/056993de-e688-40f0-8a6e-162a96db2b1c" />
@@ -115,3 +115,14 @@ src/
 ├── main.tsx                 # Application entry point
 └── index.css               # Global styles and Tailwind directives
 
+---
+### Design Decisions
+CSS Variables for Theming: All colors use CSS custom properties for consistent theming and easy theme switching
+
+Mobile-First Approach: Built for mobile first with progressive enhancement for larger screens
+
+Split-Flap Timer: Custom animated departure-board style timer for visual impact
+
+Component Reusability: Every card, badge, and button is a single reusable component
+
+TypeScript Strict Mode: No use of any type, full type safety throughout
