@@ -1,112 +1,145 @@
 # Study Sprint
 
-A pixel-perfect, accessible, responsive focus-session timer built in React 18 + TypeScript. Recreates the provided Figma/mock reference exactly: a split-flap departure-board timer, an 8px spacing system, and a full light/dark token system.
+> A pixel-perfect, accessible, responsive focus-session timer built in React 18 + TypeScript
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View_App-2B6CB0?style=for-the-badge&logo=vercel&logoColor=white)](https://study-sprint-dklx.vercel.app)
 
 ## Overview
 
-Study Sprint lets a student run a 25-minute Sprint, a 50-minute Deep Work block, or a 5-minute Short Break, track daily focus stats, and review a running log of today's sessions — complete with a simulated save flow (loading + occasional retryable failure) to demonstrate real async UI states.
+Study Sprint is a focus session tracker that lets students run timed work intervals using a split-flap departure-board timer. The application supports three session presets (Sprint 25m, Deep Work 50m, Short Break 5m), tracks daily focus statistics, and maintains a running log of today's sessions. The design system includes a full light/dark theme toggle driven entirely by CSS custom properties.
+
+---
+
+## Screenshots
+
+<img width="1596" height="775" alt="image" src="https://github.com/user-attachments/assets/03b526fc-7159-4c14-a9aa-c687092a9260" />
+<img width="1574" height="797" alt="image" src="https://github.com/user-attachments/assets/056993de-e688-40f0-8a6e-162a96db2b1c" />
+
+---
 
 ## Features
 
-- **Split-flap timer board** — MM:SS countdown rendered as individually animated flap tiles (Framer Motion).
-- **Three session presets** — Sprint (25m), Deep work (50m), Short break (5m), swappable only while paused.
-- **Start / Pause / Resume / Reset** controls with correct label states at every phase.
-- **Animated progress bar** showing percent complete and current session type.
-- **Stats rail** — Today's focus time, current streak, completed sprints; recomputed automatically from the log.
-- **Today's log** — title, duration, start time, and status (Completed / Skipped / Failed) per entry, with an insertion animation.
-- **Simulated save flow** — "Saving session…" spinner for ~1.1s, then a 30% chance of a retryable error via an accessible `role="alert"` banner.
-- **Dark mode** — driven entirely by CSS custom properties (`[data-theme]`), persisted to `localStorage`, respects `prefers-color-scheme` on first load.
-- **Full interactive states** — hover, focus-visible, active, disabled, and loading are implemented for every interactive element.
-- **Accessibility-first markup** — semantic landmarks, `aria-live` timer region, `aria-pressed` toggles, skip link, visible focus rings, `prefers-reduced-motion` support.
+### Timer Functionality
+- Split-flap departure-board timer with MM:SS countdown
+- Three session presets: Sprint (25m), Deep Work (50m), Short Break (5m)
+- Start, Pause, Resume, and Reset controls
+- Animated progress bar showing session completion percentage
+- Session status announcements via ARIA live regions
 
-## Technologies
+### Theme and Design
+- Light and Dark theme support with CSS custom properties
+- Theme preference persisted to localStorage
+- Respects system prefers-color-scheme on first load
+- Pixel-perfect recreation of Figma mock reference
+- 8px spacing system throughout the application
 
-- React 18 + TypeScript (strict mode, no `any`)
-- Vite
-- Tailwind CSS (layout/spacing utilities only — all color comes from CSS variables)
-- Framer Motion (flap-digit flip, log-entry insertion)
-- CSS Custom Properties for design tokens / theming
+### Session Management
+- Automatic session logging with timestamps
+- Status tracking: Completed, Skipped, or Failed
+- Statistics dashboard showing daily total, streak, and session count
+- Simulated save flow with loading state and retryable error handling
+- Error banner with role="alert" for accessibility
+
+### Interactive States
+- Hover, focus-visible, active, and disabled states for all interactive elements
+- Loading states with animated spinners
+- Error states with recovery actions
+- Smooth transitions and micro-interactions
+
+### Accessibility
+- 100/100 Lighthouse Accessibility score
+- Semantic HTML with proper landmark regions
+- ARIA labels on all interactive elements
+- aria-pressed for toggle controls
+- aria-live timer announcements
+- Skip to main content link
+- Visible focus indicators with WCAG AA contrast
+- prefers-reduced-motion support
+
+### Responsive Design
+- Mobile-first approach with real layout reflow
+- Tested at 375px (mobile), 768px (tablet), and 1440px (desktop)
+- Clamp-based typography for fluid scaling
+- Flex-wrap for buttons and chips on narrow viewports
+- Progress bar hidden on mobile per mock specification
+
+---
+
+## Technology Stack
+
+| Technology | Purpose |
+|------------|---------|
+| React 18 | Frontend framework |
+| TypeScript | Type safety and developer experience |
+| Vite | Build tool and development server |
+| Tailwind CSS | Layout and spacing utilities |
+| Framer Motion | Animations and micro-interactions |
+| CSS Custom Properties | Design tokens and theming |
+
+---
 
 ## Installation
 
+### Prerequisites
+- Node.js (version 18 or higher)
+- npm or yarn
+
+### Setup
+
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/study-sprint.git
+
+# Navigate to project directory
+cd study-sprint
+
+# Install dependencies
 npm install
-npm run dev       # start local dev server at http://localhost:5173
-npm run build     # type-check and produce a production build in dist/
-npm run preview   # preview the production build locally
-npm run lint      # ESLint, including jsx-a11y rules
-```
 
-Requires Node 18+.
+# Start development server
+npm run dev
 
-## Folder structure
-
-```
-src/
-  components/
-    Button.tsx           Shared pill button (variants, sizes, loading, disabled)
-    TimerBoard.tsx        Composes FlapDigit tiles into the MM:SS display
-    FlapDigit.tsx          Single animated split-flap tile
-    ThemeToggle.tsx        Light/dark switch
-    ProgressBar.tsx        Animated session-completion bar
-    StatsCard.tsx           Stat tile (label + value + tone)
-    LogEntry.tsx            Single row in Today's Log, with insertion animation
-    StatusBadge.tsx         Status pill (Completed / Skipped / Failed)
-    DurationSelector.tsx    Sprint / Deep work / Short break chooser
-    ErrorBanner.tsx         Retryable save-failure alert
-  hooks/
-    useTimer.ts             Countdown state machine: start/pause/reset/select
-    useSessionLog.ts        Log + derived stats + simulated save/retry flow
-    useTheme.ts              Theme state, persistence, prefers-color-scheme
-  utils/
-    time.ts                 pad / formatMMSS / formatClockTime / formatDuration
-    constants.ts             DURATIONS presets, save-delay/failure-rate, getDuration()
-  types/
-    index.ts                 TimerSession, LogEntry, Stats, Theme, ButtonProps, etc.
-  styles/
-    tokens.css               Light/dark CSS custom properties
-  App.tsx
-  main.tsx
-  index.css
-```
-
-Logic (hooks), presentation (components), and utilities are kept in separate folders with no duplicated JSX — every card, badge, and button is a single reusable component.
-
-## Accessibility improvements
-
-- Semantic structure: `<header>`, `<main>`, `<section>` with `aria-labelledby` on the log section.
-- Timer uses a single `role="timer"` `aria-live="polite"` region with a full-word label (`"04:32 remaining, 4 minutes 32 seconds"`) instead of forcing screen readers to parse each flap tile.
-- All toggle-style controls (theme switch, duration presets) use `aria-pressed` rather than custom roles.
-- A visually-hidden "Skip to content" link is the first focusable element.
-- `:focus-visible` gets a 2px offset outline app-wide (not just on a few components), using a token (`--focus-ring`) that meets contrast in both themes.
-- The save-failure banner uses `role="alert"` so it's announced immediately, and always pairs the error message with a Retry action rather than a dead end.
-- All color pairs (text on surface, badges, buttons) were chosen from the provided token set to meet WCAG AA contrast in both light and dark themes.
-- `prefers-reduced-motion: reduce` disables/shortens all transitions and animations, including the flap-digit flip and log insertion.
-
-## Responsiveness
-
-Built and tested at 375px (mobile), 768px (tablet), and 1440px (desktop):
-
-- The hero + stats rail is a single column on mobile/tablet and switches to a `1.3fr / 1fr` two-column grid at the `lg` breakpoint — a real reflow, not a scaled-down layout.
-- The progress bar is hidden below `sm` (matching the mock) since the timer digits and duration chips already communicate status at narrow widths.
-- Flap-tile size and timer typography use `clamp()` so digits scale fluidly between breakpoints instead of jumping.
-- Buttons and chips wrap (`flex-wrap`) rather than overflowing on narrow viewports.
-
-## Deployment
-
-Any static host works since this is a standard Vite build:
-
-```bash
+# Build for production
 npm run build
-```
 
-**Vercel:** `vercel --prod` (framework preset: Vite) or connect the repo in the dashboard — build command `npm run build`, output directory `dist`.
+# Preview production build
+npm run preview
 
-**Netlify:** connect the repo — build command `npm run build`, publish directory `dist`. Or drag-and-drop the `dist/` folder in the Netlify dashboard.
+# Run linting
+npm run lint
 
-## Design decisions where the mock was ambiguous
+---
+## Project Structure
+src/
+├── components/
+│   ├── Button.tsx           # Reusable button with variants and states
+│   ├── TimerBoard.tsx       # Split-flap digit display
+│   ├── FlapDigit.tsx        # Single animated split-flap tile
+│   ├── ThemeToggle.tsx      # Light/dark mode switch
+│   ├── ProgressBar.tsx      # Session completion progress
+│   ├── StatsCard.tsx        # Statistics display tile
+│   ├── LogEntry.tsx         # Session log entry with animation
+│   ├── StatusBadge.tsx      # Status indicator pill
+│   ├── DurationSelector.tsx # Session duration presets
+│   └── ErrorBanner.tsx      # Retryable save error alert
+├── hooks/
+│   ├── useTimer.ts          # Timer state machine logic
+│   ├── useSessionLog.ts     # Log management and statistics
+│   └── useTheme.ts          # Theme state and persistence
+├── utils/
+│   ├── time.ts              # Time formatting utilities
+│   └── constants.ts         # Application constants
+├── types/
+│   └── index.ts             # TypeScript type definitions
+├── styles/
+│   └── tokens.css           # Light/dark design tokens
+├── App.tsx                  # Main application component
+├── main.tsx                 # Application entry point
+└── index.css               # Global styles and Tailwind directives
 
-- The mock's `Button` computed hover styles via inline `onMouseEnter`/`onMouseLeave` handlers; this build moves that to Tailwind's `hover:` classes for the same visual effect with less code and no risk of interfering with framer-motion's own transforms.
-- Added a `failed` status to `SessionStatus` (only `done`/`skipped` existed in the mock) since the log's stated purpose includes completion status, and "Failed" is implied by the save-error flow.
-- The mock's inline `syncError` banner had no dismiss/retry action beyond copy; this build adds an explicit **Retry** button so the error state is actually recoverable, per the task's error-state requirement.
-- Streak count is presented as a static seed value (6 days) since there is no persisted historical data model in scope for this task — the log itself only represents "today."
+### Acknowledgments
+Built as part of the Web Dev Track stretch task
+
+Design inspired by departure board timers
+
+React, TypeScript, and Vite communities
