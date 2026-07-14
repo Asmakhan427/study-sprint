@@ -117,12 +117,12 @@ src/
 ```
 
 ## Output
-CSS Variables for Theming: All colors use CSS custom properties for consistent theming and easy theme switching
+- All colors use CSS custom properties for consistent theming and easy theme switching
 
-Mobile-First Approach: Built for mobile first with progressive enhancement for larger screens
+- Built for mobile first with progressive enhancement for larger screens
 
-Split-Flap Timer: Custom animated departure-board style timer for visual impact
+- Custom animated departure-board style timer for visual impact
 
-Component Reusability: Every card, badge, and button is a single reusable component
+- Every card, badge, and button is a single reusable component
 
-TypeScript Strict Mode: No use of any type, full type safety throughout
+-  No use of any type, full type safety throughout
